@@ -8,7 +8,6 @@ public class ReenterLockCondition implements Runnable {
 	public static ReentrantLock lock =new ReentrantLock();
 	
 	public static Condition condtionCondition =lock.newCondition();
-	
 	public void run() {
 			
 		try {

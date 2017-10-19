@@ -6,18 +6,23 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 
 import org.junit.Test;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+
+import study.reptile.bean.AbTest;
+import study.reptile.bean.BossJobBean;
+import study.reptile.bean.BossJobs;
+import study.reptile.bean.DetailAriticleBean;
+import study.reptile.bean.HotPosts;
+import study.reptile.bean.HotPostsBean;
+import study.reptile.bean.abTestValue;
 
 /**
  * 爬虫测试
@@ -26,7 +31,13 @@ import com.alibaba.fastjson.JSONObject;
  *
  */
 public class ReptileService {
-
+	
+	private static final  String  PATTERNSTRING = "http://36kr\\.com/p\\.([0-9]|[a-z])*\\.html";
+	
+	private static final String PATER_HTML = "http://36kr.com/p/[0-9]+";
+	
+	private static final String SCRIT_HTML = "<script.*?</script>";
+	
 	public static void main(String[] args) {
 		String url ="http://36kr.com/";
 		
@@ -40,7 +51,7 @@ public class ReptileService {
 			HttpURLConnection    htttp=(HttpURLConnection) contentUrl.openConnection();
 			htttp.connect();
 			String content=	contentUrl.getContent().toString();
-			Pattern pattern = Pattern.compile("http://36kr\\.com/p\\.([0-9]|[a-z])*\\.html");
+			Pattern pattern = Pattern.compile(PATTERNSTRING);
 	        Matcher matcher = pattern.matcher(content);
 	        System.out.println(content);
 	        String jsSrc = null;
@@ -98,7 +109,7 @@ public class ReptileService {
 	        if(result.contains("^http://36kr.com/p/")) {
 	        	System.out.println(true);
 	        }//"<script.*?</script>";  http://36kr.com/p/[0-9]+
-	        Pattern  pattern = Pattern.compile("http://36kr.com/p/[0-9]+",Pattern.DOTALL);
+	        Pattern  pattern = Pattern.compile(PATER_HTML,Pattern.DOTALL);
 	        Matcher  matcher = pattern.matcher(result);
 	        if(matcher.find()) {
 	        	System.out.println(true);
@@ -148,11 +159,12 @@ public class ReptileService {
 	        }  
 
 	       //"<script.*?</script>";  http://36kr.com/p/[0-9]+
-	        Pattern  pattern = Pattern.compile("<script.*?</script>",Pattern.DOTALL);
+	        Pattern  pattern = Pattern.compile(SCRIT_HTML,Pattern.DOTALL);
 	        Matcher  matcher = pattern.matcher(result);
 	        String   value  = null ;
 	        while(matcher.find()) {
 	        	value = matcher.group(0);
+	        	
 	        	if(value.contains("<script>var props=")) {
 	        		value = value.replaceAll("<script>var props=", "");
 	        		value = value.replaceAll("</script>", "");
@@ -160,20 +172,19 @@ public class ReptileService {
 	        		value=value+"}";
 	        		
 	        		try {
-	        			Map map =JSON.parseObject(value, Map.class);
-	        			for(Object valuesObject : map.values()) {
-	        				if(valuesObject.toString().startsWith("[")) {
-	        					String   valuu'e=valuesObject.toString().replaceFirst("[", "");
-	        					
-	        				}
-	        				
-	        				Map map1 =JSON.parseObject(valuesObject.toString(), Map.class);
-	        				for(Object valuesObject1 : map.values()) {
-	        					System.out.println(valuesObject1);
-	        				}
-	        				
-	        			}
-						
+	            		JSONObject  o =JSON.parseObject(value, JSONObject.class);
+	            		JSONObject  detailAriticle = o.getJSONObject("detailArticle|post");
+	            		JSONArray   abTest = o.getJSONArray("abTest|abtest");
+	            		JSONArray   bossJobs = o.getJSONArray("bossJobs|job");
+	            		JSONArray   hotPost = o.getJSONArray("hotPostsOf30|hotPost");
+	            		
+	            		DetailAriticleBean  detailBean =JSON.parseObject(detailAriticle.toString(), DetailAriticleBean.class);
+	            		List<abTestValue>  list= JSON.parseArray(abTest.toString(), abTestValue.class) ; 
+	            		List<BossJobBean> bossJob = JSON.parseArray(bossJobs.toString(), BossJobBean.class);
+	            		List<HotPostsBean> hots = JSON.parseArray(hotPost.toString(), HotPostsBean.class);
+	            		
+	            		System.out.println(111);
+		
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

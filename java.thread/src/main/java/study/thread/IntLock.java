@@ -9,6 +9,7 @@ public class IntLock implements Runnable {
 	public static ReentrantLock  lock1 =new ReentrantLock();
 	public static ReentrantLock  lock2 =new ReentrantLock();
 	int lock;
+	
 	public void run() {
 
 		try {

@@ -10,7 +10,6 @@ public class SemapDemo implements Runnable {
 
 	
 	final Semaphore semp =new Semaphore(5);
-	
 	public void run() {
 		try {
 			semp.acquire();

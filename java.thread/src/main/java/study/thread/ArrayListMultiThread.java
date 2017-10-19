@@ -13,7 +13,6 @@ public class ArrayListMultiThread {
 
 	static ArrayList<Integer> al=new ArrayList<Integer>(10); 
 	public static class AddThread implements Runnable{
-
 		public void run() {
 			for(int i= 0; i<1000000; i++) {
 				al.add(i);
