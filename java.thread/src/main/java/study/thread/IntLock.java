@@ -10,6 +10,7 @@ public class IntLock implements Runnable {
 	public static ReentrantLock  lock2 =new ReentrantLock();
 	int lock;
 	
+	@Override
 	public void run() {
 
 		try {

@@ -34,7 +34,7 @@ public class ReptileService {
 	
 	private static final  String  PATTERNSTRING = "http://36kr\\.com/p\\.([0-9]|[a-z])*\\.html";
 	
-	private static final String PATER_HTML = "http://36kr.com/p/[0-9]+";
+	private static final String PATER_HTML = "http://36kr.com/p/[0-9]+\\.html";
 	
 	private static final String SCRIT_HTML = "<script.*?</script>";
 	
@@ -44,7 +44,7 @@ public class ReptileService {
 	}
 	
 	@Test
-	public   void test1() {
+	public   void test1Test() {
 		String url ="http://36kr.com/";
 		try {
 			URL contentUrl =new URL(url);
