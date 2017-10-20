@@ -30,7 +30,7 @@ import study.reptile.bean.abTestValue;
  * 创建时间  2017年10月15日 下午9:45:17
  *
  */
-public class ReptileService {
+public class ReptileServiceTest {
 	
 	private static final  String  PATTERNSTRING = "http://36kr\\.com/p\\.([0-9]|[a-z])*\\.html";
 	
@@ -69,7 +69,7 @@ public class ReptileService {
 	}
 	
 	@Test
-	public  void test2() {
+	public  void test2Test() {
 		String url ="http://36kr.com/";
 		  BufferedReader in = null;    
 		  String result = ""; 
@@ -122,7 +122,7 @@ public class ReptileService {
 
 	}
 	@Test
-	public  void test3() {
+	public  void test3Test() {
 		String url ="http://36kr.com/p/533801.html";
 		  BufferedReader in = null;    
 		  String result = ""; 
