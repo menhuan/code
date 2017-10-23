@@ -1,5 +1,10 @@
 package study.race;
 
+/**
+ * @author ASUS
+ * 创建时间  2017年10月23日 下午8:21:21
+ *
+ */
 public class LeetCodeOne {
 
 	public static void main(String[] args) {
