@@ -21,7 +21,7 @@ import com.thoughtworks.xstream.io.xml.XppDriver;
 
 import web.study.model.wechat.ArticleResMessage;
 import web.study.model.wechat.NewsMessage;
-import web.study.model.wechat.TestResMessage;
+import web.study.model.wechat.TextResMessage;
 import web.study.model.wechat.TextWeChatMessage;
 
 /**
@@ -137,7 +137,7 @@ public class MessageUtil {
      * @param textWeChatMessage
      * @return
      */
-    public static String messageToXml(TestResMessage resTest){
+    public static String messageToXml(TextResMessage resTest){
     	xStream.alias("xml", resTest.getClass());
     	return xStream.toXML(resTest);
     }

@@ -5,7 +5,7 @@ package web.study.model.wechat;
  * @author dell
  *
  */
-public class TestResMessage extends BaseResMessage {
+public class TextResMessage extends BaseResMessage {
 
 	private String content ;
 

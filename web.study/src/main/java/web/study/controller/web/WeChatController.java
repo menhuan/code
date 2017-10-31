@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import web.study.util.PassUtil;
+import web.study.util.SignUtil;
+
 /**
  * 微信Controller
  * @author dell
@@ -45,7 +48,7 @@ public class WeChatController {
             
             // 通过检验signature对请求进行校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败 
             String  DNBX_TOKEN = "123123";
-            if (SignUtil.checkSignature(DNBX_TOKEN, signature, timestamp, nonce)) {  
+            if (SignUtil.checkSign(DNBX_TOKEN, signature, timestamp, nonce)) {  
                 response.getWriter().write(echostr);  
             } else {  
             }
@@ -60,5 +63,7 @@ public class WeChatController {
             
         }
 	}
+	
+	
 	
 }
