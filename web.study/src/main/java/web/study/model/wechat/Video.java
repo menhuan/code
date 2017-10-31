@@ -5,7 +5,7 @@ package web.study.model.wechat;
  * @author dell
  *
  */
-public class Video extends BaseWeChatMessage {
+public class Video  {
 
 	/**
 	 * 媒体id

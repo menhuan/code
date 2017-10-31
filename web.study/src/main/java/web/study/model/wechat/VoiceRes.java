@@ -5,7 +5,7 @@ package web.study.model.wechat;
  * @author dell
  *
  */
-public class VoiceResMessage  extends BaseResMessage{
+public class VoiceRes{
 
 	private String voice ;
 

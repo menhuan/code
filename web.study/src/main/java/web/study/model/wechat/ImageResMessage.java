@@ -1,20 +1,16 @@
 package web.study.model.wechat;
 
-/**
- * 图片消息回复
- * @author dell
- *
- */
-public class ImageResMessage extends BaseResMessage {
+public class ImageResMessage  extends BaseResMessage{
 
-	private String mediaId ;
+	
+	private ImageRes  imageRes ;
 
-	public String getMediaId() {
-		return mediaId;
+	public ImageRes getImageRes() {
+		return imageRes;
 	}
 
-	public void setMediaId(String mediaId) {
-		this.mediaId = mediaId;
+	public void setImageRes(ImageRes imageRes) {
+		this.imageRes = imageRes;
 	}
 	
 	

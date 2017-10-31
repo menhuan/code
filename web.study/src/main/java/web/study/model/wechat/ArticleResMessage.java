@@ -8,38 +8,37 @@ package web.study.model.wechat;
 public class ArticleResMessage extends BaseResMessage {
 
 	  // 图文消息名称
-    private String Title;
+    private String title;
     // 图文消息描述
-    private String Description;
+    private String description;
     // 图片链接，支持JPG、PNG格式，较好的效果为大图640*320，小图80*80
-    private String PicUrl;
+    private String picUrl;
     // 点击图文消息跳转链接
-    private String Url;
-	
-    
-    public String getTitle() {
-		return Title;
+    private String url;
+	public String getTitle() {
+		return title;
 	}
 	public void setTitle(String title) {
-		Title = title;
+		this.title = title;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	public String getPicUrl() {
-		return PicUrl;
+		return picUrl;
 	}
 	public void setPicUrl(String picUrl) {
-		PicUrl = picUrl;
+		this.picUrl = picUrl;
 	}
 	public String getUrl() {
-		return Url;
+		return url;
 	}
 	public void setUrl(String url) {
-		Url = url;
+		this.url = url;
 	}
-    
+	
+   
 }
