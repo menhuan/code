@@ -43,6 +43,8 @@ public class WeChatService {
 			e.printStackTrace();
 		}
 		
+		return resMessage;
+		
 	}
 	
 	/**
