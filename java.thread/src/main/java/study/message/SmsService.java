@@ -12,14 +12,14 @@ public class SmsService {
 
 	public static void main(String[] args) throws Exception{
 	    //设置超时时间-可自行调整
-	    System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
-	    System.setProperty("sun.net.client.defaultReadTimeout", "10000");
+//	    System.setProperty("sun.net.client.defaultConnectTimeout", "10000");
+//	    System.setProperty("sun.net.client.defaultReadTimeout", "10000");
 	    //初始化ascClient需要的几个参数
 	    final String product = "Dysmsapi";//短信API产品名称（短信产品名固定，无需修改）
 	    final String domain = "dysmsapi.aliyuncs.com";//短信API产品域名（接口地址固定，无需修改）
 	    //替换成你的AK
-	    final String accessKeyId = "LTAI8irYKNanPHbP11";//你的accessKeyId,参考本文档步骤2
-	    final String accessKeySecret = "feD9Q27N2gaUZ111VJEa2nrZBsL2wM6N";//你的accessKeySecret，参考本文档步骤2
+	    final String accessKeyId = "LTAI8irYKNanPHbP";//你的accessKeyId,参考本文档步骤2
+	    final String accessKeySecret = "feD9Q27N2gaUZ1VJEa2nrZBsL2wM6N";//你的accessKeySecret，参考本文档步骤2
 	    //初始化ascClient,暂时不支持多region（请勿修改）
 	    IClientProfile profile = DefaultProfile.getProfile("cn-hangzhou", accessKeyId,
 	    accessKeySecret);
