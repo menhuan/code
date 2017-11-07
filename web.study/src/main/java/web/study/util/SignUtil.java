@@ -1,6 +1,13 @@
 package web.study.util;
 
 import java.util.Arrays;
+import java.util.Map.Entry;
+import java.util.SortedMap;
+import java.util.TreeMap;
+
+import org.apache.commons.lang3.StringUtils;
+
+import com.alibaba.fastjson.JSON;
 
 /**
  * 签名校验类
@@ -8,7 +15,10 @@ import java.util.Arrays;
  */
 public class SignUtil {
 
-	
+	/**
+	 * 微信APIKEY
+	 */
+	private static final String APIKEY = "wx61576d34a3193a4d";
 
     /** 
      * 验证签名 
@@ -52,5 +62,30 @@ public class SignUtil {
     	String tmpStr = PassUtil.encode(content.toString());
     	return tmpStr != null ? tmpStr.equals(signature.toUpperCase()) : false ;
     	 
+    }
+    
+    /**
+     * 创建md5 的签名
+     * @return
+     */
+    public static <T> String createMD5Sign(T object){
+    	SortedMap<String,  Object > map  = JSON.
+    			parseObject(JSON.toJSONString(object), TreeMap.class); 
+    	StringBuffer buffer =new StringBuffer();
+    	for(Entry<String, Object> entry : map.entrySet()){
+    		String key = entry.getKey();
+    		Object value = entry.getValue();
+    		
+    		if(StringUtils.isNotEmpty(key) && StringUtils.isNoneEmpty(value.toString())
+    				&& !"sign".equals(key) && !"key".equals(key)){
+    			buffer.append(key).append("=").append(value).append("&");
+    		}
+    		
+    	}
+    	
+    	buffer.append("key=").append(APIKEY);
+    	
+    	String result =PassUtil.MD5encrpy(buffer.toString());
+    	return result;
     }
 }

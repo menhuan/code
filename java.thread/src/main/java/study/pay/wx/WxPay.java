@@ -8,7 +8,5 @@ package study.pay.wx;
 public class WxPay {
 
 	
-	public static void main(String[] args) {
-		
-	}
+	
 }
