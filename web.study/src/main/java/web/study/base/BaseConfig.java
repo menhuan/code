@@ -39,6 +39,18 @@ public class BaseConfig {
 	@Value("${sms.address.send }")
 	public String smsAddressSend ;
 	
+	/**
+	 * 图灵机器人key
+	 */
+	@Value("${tu.ling.api.key}")
+	public String tuLingApiKey ;
+	
+	
+	/**
+	 * 微信token
+	 */
+	@Value("${we.chat.token}")
+	public String weChatToken;
 	
 	
 }

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import web.study.base.BaseConfig;
 import web.study.model.wechat.pay.PayWeBean;
 import web.study.util.MessageUtil;
 import web.study.util.SignUtil;
@@ -27,7 +28,7 @@ import web.study.util.SignUtil;
  */
 @Controller
 @RequestMapping("weChat")
-public class WeChatController {
+public class WeChatController extends BaseConfig {
 	
 	/**
 	 * 日志文件
@@ -81,8 +82,8 @@ public class WeChatController {
             String echostr = request.getParameter("echostr");//随机字符串  
             
             // 通过检验signature对请求进行校验，若校验成功则原样返回echostr，表示接入成功，否则接入失败 
-            String  DNBX_TOKEN = "123123";
-            if (SignUtil.checkSign(DNBX_TOKEN, signature, timestamp, nonce)) {  
+   //         String  DNBX_TOKEN = "123123";
+            if (SignUtil.checkSign(weChatToken, signature, timestamp, nonce)) {  
                 response.getWriter().write(echostr);  
             } else {  
             }
