@@ -21,7 +21,7 @@ import web.study.util.SpringBeanUtil;
  * 发送短信  
  * @author dell
  */
-@Service
+
 public class SmsService  {
 
 	/**

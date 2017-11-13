@@ -36,7 +36,7 @@ public class BaseConfig {
 	/**
 	 * 发送地
 	 */
-	@Value("${sms.address.send }")
+	@Value("${sms.address.send}")
 	public String smsAddressSend ;
 	
 	/**

@@ -6,13 +6,18 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.SecureRandom;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 
+import org.junit.Test;
+
 import web.study.service.MyX509TruetManager;
+import web.study.util.RestRequestClient;
 
 /**
  * 测试类
@@ -62,7 +67,13 @@ public class TokenTest {
 		httpUrlConn.disconnect();
 		System.out.println(buffer);
 		
+	}
+	
+	@Test
+	public void test(){
+		String url = "https://api.weixin.qq.com/cgi-bin/menu/create?access_token='123123'";
 		
-		
+		RestRequestClient  rest = new RestRequestClient();
+		rest.restSubmitBean(url, new HashMap());
 	}
 }
